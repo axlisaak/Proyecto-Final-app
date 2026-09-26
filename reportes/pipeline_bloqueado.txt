@@ -1,0 +1,31 @@
+Run started:2026-09-26 01:49:26.059115
+
+Test results:
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.8.6/plugins/b608_hardcoded_sql_expressions.html
+   Location: app/buscar_publicaciones.py:12:15
+11	def buscar_por_usuario(usuario: str = ""):
+12	    consulta = "SELECT id, content FROM posts WHERE username = '" + usuario + "' ORDER BY id DESC LIMIT 20"
+13	    conexion = obtener_conexion()
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 79
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 1
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 1
+		Medium: 0
+		High: 0
+Files skipped (0):
